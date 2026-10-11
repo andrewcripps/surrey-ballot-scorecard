@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Surrey Ballot Scorecard 2026</title>
+<meta name="description" content="Score Surrey's 2026 city council and school trustee candidates on what matters to you, and build a candidate-first ballot. Scores stay in your browser.">
+<meta property="og:title" content="Surrey Ballot Scorecard 2026">
+<meta property="og:description" content="Score Surrey's 2026 council and school trustee candidates on your own values, regardless of slate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Surrey general local election · Saturday, October 17, 2026 · 8am–8pm</div>
+    <h1>Surrey Ballot Scorecard</h1>
+    <p class="lede">Score each candidate on the things you care about, regardless of slate. The page builds your council and school trustee picks from your own scores. Your scores stay in your browser on this device; nobody else sees them.</p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-council" aria-selected="true">City Council <small>vote up to 8</small></button>
+    <button class="tab" role="tab" id="tab-trustee" aria-selected="false">School Trustee <small>vote up to 6</small></button>
+  </div>
+
+  <details class="how" id="how" open>
+    <summary>How to use this scorecard</summary>
+    <div class="steps">
+      <div><b>Screen</b><p>Candidates with no profile, or only a slate message, are flagged. Hide them, or keep them in if you know them from elsewhere.</p></div>
+      <div><b>Weight</b><p>Set how much each criterion matters to you. 0 ignores it, 3 counts it triple.</p></div>
+      <div><b>Score</b><p>Mark 1–5 on each criterion. Leave a box blank if you don't know yet. Click a mark again to clear it.</p></div>
+      <div><b>Pick</b><p>Your top scorers fill the ballot. You can vote for fewer than the maximum, which gives your strongest picks more weight.</p></div>
+    </div>
+  </details>
+
+  <div class="weights" id="weights"></div>
+
+  <div class="layout">
+    <section>
+      <div class="toolbar">
+        <input type="search" id="q" placeholder="Search name, background, priority" aria-label="Search candidates">
+        <label>Slate <select id="slate"></select></label>
+        <label>Sort <select id="sort">
+          <option value="score">Highest score</option>
+          <option value="name">Name A–Z</option>
+          <option value="slate">Slate</option>
+        </select></label>
+        <label><input type="checkbox" id="hideScr"> Hide flagged</label>
+      </div>
+      <div class="list" id="list"></div>
+    </section>
+
+    <aside class="ballot" id="ballot" aria-live="polite"></aside>
+  </div>
+
+  <p class="note">Background and priorities paraphrase each candidate's own statement on the City of Surrey candidate pages (names link to them), plus slate sites. They are the candidates' claims, not verified facts, and nothing here is an endorsement. Before deciding, it helps to check incumbents' recorded votes in council and board minutes, watch an all-candidates debate, and read local news questionnaires. Official information: <a href="https://www.surrey.ca/2026-municipal-election" target="_blank" rel="noopener">surrey.ca/2026-municipal-election</a>.</p>
+</div>
+
+<script src="candidates.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
