@@ -9,6 +9,7 @@
 <meta property="og:description" content="Score Surrey's 2026 council and school trustee candidates on your own values, regardless of slate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%231d2433%27/%3E%3Cpath d=%27M9 16.5l4.5 4.5L23 11%27 stroke=%27%23fff%27 stroke-width=%273.2%27 fill=%27none%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,6 +18,7 @@
     <div class="eyebrow">Surrey general local election · Saturday, October 17, 2026 · 8am–8pm</div>
     <h1>Surrey Ballot Scorecard</h1>
     <p class="lede">Score each candidate on the things you care about, regardless of slate. The page builds your council and school trustee picks from your own scores. Your scores stay in your browser on this device; nobody else sees them.</p>
+    <p class="updated">Candidate information last updated October 11, 2026</p>
   </header>
 
   <div class="tabs" role="tablist">
@@ -56,6 +58,8 @@
 
   <p class="note">Background and priorities paraphrase each candidate's own statement on the City of Surrey candidate pages (names link to them), plus slate sites. They are the candidates' claims, not verified facts, and nothing here is an endorsement. Before deciding, it helps to check incumbents' recorded votes in council and board minutes, watch an all-candidates debate, and read local news questionnaires. Official information: <a href="https://www.surrey.ca/2026-municipal-election" target="_blank" rel="noopener">surrey.ca/2026-municipal-election</a>.</p>
 </div>
+
+<div class="picksbar" id="picksbar" aria-live="polite"><span id="picksbar-txt">No picks yet</span><button type="button" id="picksbar-btn">See my picks</button></div>
 
 <script src="candidates.js"></script>
 <script src="app.js"></script>

@@ -59,7 +59,7 @@ function renderList(){
       <div class="scores">${CRIT.map(c=>`<div class="crit"><span class="cl" title="${esc(c.h)}">${c.l}${state.weights[c.k]===0?" (off)":""}</span><div class="boxes">${[1,2,3,4,5].map(v=>`<button class="box" data-k="${c.k}" data-v="${v}" aria-label="${esc(n)} ${c.l} ${v}" aria-pressed="${(sc[slug]||{})[c.k]===v}">${v}</button>`).join("")}</div></div>`).join("")}
         <div class="rowact"><button class="ghost skip" aria-pressed="${skipped}" title="Keep this candidate off your ballot even if they score high">${skipped?"Left off ballot":"Leave off ballot"}</button></div>
       </div>
-    </article>`;}).join(""):'<p class="ballot empty">No candidates match these filters.</p>';
+    </article>`;}).join(""):'<p class="empty-msg">No candidates match these filters.</p>';
 }
 
 function renderBallot(){
@@ -89,21 +89,25 @@ function renderBallot(){
     $("no").onclick=()=>renderBallot();};
 }
 
+function renderPicksbar(){
+  const race=state.race,n=ballotPicks(race).length,max=state.count[race];
+  $("picksbar-txt").textContent=n?`${n} of ${max} ${race==="council"?"council":"trustee"} picks chosen`:`No ${race==="council"?"council":"trustee"} picks yet`;
+}
 function renderToolbar(){
   $("slate").innerHTML='<option value="">All slates</option>'+slates(state.race).map(s=>`<option${state.slate===s?" selected":""}>${esc(s)}</option>`).join("");
   $("sort").value=state.sort;$("hideScr").checked=state.hideScr;
   $("tab-council").setAttribute("aria-selected",state.race==="council");
   $("tab-trustee").setAttribute("aria-selected",state.race==="trustee");
 }
-function render(){renderToolbar();renderList();renderBallot();}
+function render(){renderToolbar();renderList();renderBallot();renderPicksbar();}
 
 $("list").addEventListener("click",e=>{
   const card=e.target.closest(".cand");if(!card)return;const slug=card.dataset.slug,race=state.race;
   const b=e.target.closest(".box");
   if(b){const k=b.dataset.k,v=+b.dataset.v;const sc=state.scores[race][slug]=state.scores[race][slug]||{};
-    if(sc[k]===v)delete sc[k];else sc[k]=v;save();renderList();renderBallot();
+    if(sc[k]===v)delete sc[k];else sc[k]=v;save();renderList();renderBallot();renderPicksbar();
     const again=document.querySelector(`.cand[data-slug="${slug}"] .box[data-k="${k}"][data-v="${v}"]`);if(again)again.focus();return;}
-  if(e.target.closest(".skip")){state.skip[race][slug]=!state.skip[race][slug];save();renderList();renderBallot();}
+  if(e.target.closest(".skip")){state.skip[race][slug]=!state.skip[race][slug];save();renderList();renderBallot();renderPicksbar();}
 });
 $("tab-council").onclick=()=>{state.race="council";state.slate="";save();render();};
 $("tab-trustee").onclick=()=>{state.race="trustee";state.slate="";save();render();};
@@ -111,5 +115,6 @@ $("q").oninput=e=>{state.q=e.target.value;renderList();};
 $("slate").onchange=e=>{state.slate=e.target.value;save();renderList();};
 $("sort").onchange=e=>{state.sort=e.target.value;save();renderList();};
 $("hideScr").onchange=e=>{state.hideScr=e.target.checked;save();renderList();};
+$("picksbar-btn").onclick=()=>{$("ballot").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});};
 renderWeights();render();
 })();
