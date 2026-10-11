@@ -4,7 +4,7 @@ const CRIT=[
   {k:"spec",l:"Specific plan",h:"Concrete commitments vs. general statements"},
   {k:"fit",l:"My priorities",h:"Names the issues you care most about"},
   {k:"rec",l:"Track record",h:"What they delivered, how they voted, conduct"},
-  {k:"ind",l:"Independent",h:"Likely to think for themselves, not just vote the slate line"}
+  {k:"ind",l:"Independent thinker",h:"Likely to think for themselves, not just vote the slate line"}
 ];
 const {CB,TB,COUNCIL,TRUSTEE}=window;
 const RACES={
